@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Cost Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="text-center">Insurance Cost Prediction</h1>
+    <div class="container">
+        <form class="ok" action="/predict" method="post">
+            <div class="main_form">
+            <div class="form-group">
+                <label for="model">Select Model:</label>
+                <select id="model" name="model" class="form-control">
+                    <option value="Linear Regression">Linear Regression</option>
+                    <option value="Decision Tree">Decision Tree</option>
+                    <option value="Random Forest">Random Forest</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" class="form-control" placeholder="Enter age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" class="form-control" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" step="0.01" id="bmi" name="bmi" class="form-control" placeholder="Enter BMI" required>
+            </div>
+
+            <div class="form-group">
+                <label for="children">Number of Children:</label>
+                <input type="number" id="children" name="children" class="form-control" placeholder="Enter number of children" required>
+            </div>
+
+            <div class="form-group">
+                <label for="smoker">Smoker:</label>
+                <select id="smoker" name="smoker" class="form-control" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" class="form-control" required>
+                    <option value="0">Southeast</option>
+                    <option value="1">Southwest</option>
+                    <option value="2">Northeast</option>
+                    <option value="3">Northwest</option>
+                </select>
+            </div>
+
+        </div>
+            <div class="button-wrapper">
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+        </form>
+        <h2 class="mt-4 text-center">{{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
